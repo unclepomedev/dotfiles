@@ -13,5 +13,5 @@ test-rs:
 
 check-rs: lint-rs test-rs
 
-deps-graph:
+dep:
     cargo depgraph --workspace-only | dot -Tsvg > deps.svg
