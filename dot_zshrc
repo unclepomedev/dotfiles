@@ -1,0 +1,59 @@
+# For Apple Silicon
+
+# ========================================
+# PATH
+# ========================================
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="$HOME/.local/bin:$PATH"
+
+# ========================================
+# Completions
+# ========================================
+autoload -Uz compinit
+compinit -i
+command -v uv  >/dev/null && eval "$(uv generate-shell-completion zsh)"
+command -v uvx >/dev/null && eval "$(uvx --generate-shell-completion zsh)"
+
+# ========================================
+# Bun
+# ========================================
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+# ========================================
+# Environment variables
+# ========================================
+export MAVEN_REPOSITORY="$HOME/.m2/repository"
+
+# ========================================
+# Functions
+# ========================================
+houdini() {
+  local houdini_bin
+  houdini_bin=$(ls -d /Applications/Houdini/Houdini*/Frameworks/Houdini.framework/Versions/Current/Resources/bin/houdini 2>/dev/null | sort -V | tail -1)
+  if [[ -z "$houdini_bin" ]]; then
+    echo "❌ Houdini not found in /Applications/Houdini/" >&2
+    return 1
+  fi
+  "$houdini_bin" "$@"
+}
+
+# ========================================
+# Aliases
+# ========================================
+alias j='just'
+alias cat='bat --paging=never'
+alias tree='eza --tree --icons'
+alias ra='chezmoi re-add'
+
+# ========================================
+# Prompt
+# ========================================
+export PS1="%~ % "
+
+# ========================================
+# Local-only settings
+# ========================================
+[ -f "$HOME/.config/zsh/private.zsh" ] && source "$HOME/.config/zsh/private.zsh"
+
