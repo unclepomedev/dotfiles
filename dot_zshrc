@@ -1,5 +1,4 @@
 # For Apple Silicon
-
 # ========================================
 # PATH
 # ========================================
@@ -39,21 +38,21 @@ houdini() {
   "$houdini_bin" "$@"
 }
 
+brewdump() {
+  brew bundle dump --force --no-vscode --file="$HOME/.local/share/chezmoi/Brewfile"
+  echo "✅ Brewfile updated at $(chezmoi source-path)/Brewfile"
+}
+
 # ========================================
 # Aliases
 # ========================================
 alias j='just'
 alias cat='bat --paging=never'
 alias tree='eza --tree --icons'
-alias ra='chezmoi re-add'
+alias czr='chezmoi re-add'
 
 # ========================================
 # Prompt
 # ========================================
 export PS1="%~ % "
-
-# ========================================
-# Local-only settings
-# ========================================
-[ -f "$HOME/.config/zsh/private.zsh" ] && source "$HOME/.config/zsh/private.zsh"
 
