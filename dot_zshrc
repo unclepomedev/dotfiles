@@ -48,7 +48,7 @@ brewdump() {
 # ========================================
 alias j='just'
 alias cat='bat --paging=never'
-alias tree='eza --tree --icons'
+alias tree='eza --tree'
 alias czr='chezmoi re-add'
 alias cza='chezmoi add'
 
