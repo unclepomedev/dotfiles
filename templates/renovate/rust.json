@@ -1,21 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended",
-    ":timezone(Asia/Tokyo)",
-    ":maintainLockFilesWeekly"
+    "config:recommended"
   ],
-  "labels": [
-    "dependencies"
-  ],
-  "cargo": {
-    "managerFilePatterns": [
-      "/(^|/)Cargo\\.toml$/"
-    ],
-    "rangeStrategy": "bump"
-  },
   "packageRules": [
     {
+      "description": "Rust dependencies",
       "matchManagers": [
         "cargo"
       ],
@@ -27,13 +17,20 @@
       "automerge": false
     },
     {
-      "groupName": "tokio monorepo",
+      "description": "tokio monorepo",
       "matchPackageNames": [
         "/^tokio/"
-      ]
+      ],
+      "groupName": "tokio monorepo"
     }
   ],
   "schedule": [
-    "before 9am on monday"
+    "* 0-5 * * 1"
+  ],
+  "labels": [
+    "renovate"
+  ],
+  "assignees": [
+    "unclepomedev"
   ]
 }

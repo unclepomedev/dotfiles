@@ -13,7 +13,7 @@
       "automerge": false,
       "automergeType": "pr",
       "pinDigests": true
-    },
+    }
   ],
   "schedule": [
     "* 0-5 * * 1"

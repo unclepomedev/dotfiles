@@ -12,7 +12,7 @@
       ],
       "groupName": "python dependencies",
       "automerge": false
-    },
+    }
   ],
   "schedule": [
     "* 0-5 * * 1"
